@@ -4,27 +4,11 @@ import hljs from "highlight.js";
 import "highlight.js/styles/github-dark-dimmed.css";
 import styles from "./Editor.module.css";
 
-const initialCode = `
-'use strict';
+interface EditorProps {
+  text: string;
+}
 
-// Let/const
-var name = 'Bob', time = 'yesterday';
-time = 'today';
-
-// Template string
-console.log('Hello ' + name + ', how are you ' + time + '?');
-
-var bob = {
-  // Object shorthand
-  name: name,
-  // Object method
-  sayMyName: function () {
-    console.log(this.name);
-  }
-};
-`.trim();
-
-export const Editor: Component = () => {
+export const Editor: Component<EditorProps> = (props) => {
   let pre: HTMLPreElement;
 
   onMount(() => {
@@ -33,7 +17,7 @@ export const Editor: Component = () => {
 
   return (
     <pre ref={pre} class={`${styles.editor} language-javascript`}>
-      {initialCode}
+      {props.text}
     </pre>
   );
 };

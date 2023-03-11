@@ -9,9 +9,11 @@
   "dependencies": {
     "codejar": "^3.7.0",
     "highlight.js": "^11.7.0",
+    "lebab": "^3.2.0",
     "solid-js": "^1.6.10"
   },
   "devDependencies": {
+    "@esbuild-plugins/node-globals-polyfill": "^0.2.3",
     "prettier": "^2.8.4",
     "typescript": "^4.9.5",
     "vite": "^4.1.1",

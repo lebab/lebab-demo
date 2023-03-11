@@ -1,13 +1,56 @@
-import type { Component } from "solid-js";
+import { Component, createSignal } from "solid-js";
 import { Editor } from "./Editor";
 import styles from "./App.module.css";
+import lebab from "lebab";
+
+const initialCode = `
+'use strict';
+
+// Let/const
+var name = 'Bob', time = 'yesterday';
+time = 'today';
+
+// Template string
+console.log('Hello ' + name + ', how are you ' + time + '?');
+
+var bob = {
+  // Object shorthand
+  name: name,
+  // Object method
+  sayMyName: function () {
+    console.log(this.name);
+  }
+};
+`.trim();
+
+const transforms = [
+  "arrow",
+  "arrow-return",
+  "for-of",
+  "for-each",
+  "arg-rest",
+  "arg-spread",
+  "obj-method",
+  "obj-shorthand",
+  "no-strict",
+  "exponent",
+  "let",
+  "class",
+  "commonjs",
+  "template",
+  "default-param",
+  "destruct-param",
+  "includes",
+];
 
 export const App: Component = () => {
+  const [code, setCode] = createSignal(initialCode);
+
   return (
     <div class={styles.App}>
       <h1>Hello Lebab!</h1>
-      <Editor />
-      <Editor />
+      <Editor text={code()} />
+      <Editor text={lebab.transform(code(), transforms).code} />
     </div>
   );
 };
