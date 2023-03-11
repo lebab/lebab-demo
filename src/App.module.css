@@ -1,0 +1,29 @@
+body {
+  background: rgb(51, 58, 68);
+  color: rgb(173, 186, 199);
+  font-family: "Verdana", Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.App {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto 1fr;
+  grid-template-areas:
+    "header header"
+    "left right";
+  column-gap: 15px;
+  height: calc(100vh - 30px);
+  padding: 15px;
+}
+.App h1 {
+  grid-area: header;
+  margin: 0;
+}
+.App pre {
+  grid-area: left;
+}
+.App pre + pre {
+  grid-area: right;
+}
