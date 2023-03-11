@@ -1,4 +1,4 @@
-import { Component, createSignal } from "solid-js";
+import { Component, createEffect, createSignal } from "solid-js";
 import { Editor } from "./Editor";
 import styles from "./App.module.css";
 import lebab from "lebab";
@@ -49,7 +49,7 @@ export const App: Component = () => {
   return (
     <div class={styles.App}>
       <h1>Hello Lebab!</h1>
-      <Editor text={code()} />
+      <Editor text={code()} onChange={setCode} />
       <Editor text={lebab.transform(code(), transforms).code} />
     </div>
   );
