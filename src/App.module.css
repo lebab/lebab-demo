@@ -20,14 +20,9 @@ body {
 
 .App header {
   grid-area: header;
-}
-.App header h1 {
-  color: #f0db4f;
-  margin: 0;
-}
-.App header p {
-  margin: 0;
-  font-size: 12px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto;
 }
 
 .App pre {

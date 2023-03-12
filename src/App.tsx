@@ -2,7 +2,8 @@ import { Component, createSignal } from "solid-js";
 import { Editor } from "./Editor";
 import styles from "./App.module.css";
 import lebab from "lebab";
-import logo from "./assets/lebab-logo-32.png";
+import { TransformMenu } from "./TransformMenu";
+import { Title } from "./Title";
 
 const initialCode = `
 'use strict';
@@ -72,8 +73,8 @@ export const App: Component = () => {
   return (
     <div class={styles.App}>
       <header>
-        <h1>Lebab</h1>
-        <p>Lebab modernizes your JavaScript code!</p>
+        <Title />
+        <TransformMenu />
       </header>
       <Editor type="old" text={code()} onChange={setCode} />
       <Editor type="new" text={transformedCode()} />
