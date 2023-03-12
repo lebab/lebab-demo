@@ -19,7 +19,12 @@ body {
 }
 .App h1 {
   grid-area: header;
+  color: #f0db4f;
   margin: 0;
+}
+.App h1 img {
+  margin-right: 10px;
+  vertical-align: bottom;
 }
 .App pre {
   grid-area: left;

@@ -2,6 +2,7 @@ import { Component, createSignal } from "solid-js";
 import { Editor } from "./Editor";
 import styles from "./App.module.css";
 import lebab from "lebab";
+import logo from "./assets/lebab-logo-32.png";
 
 const initialCode = `
 'use strict';
@@ -56,7 +57,10 @@ export const App: Component = () => {
 
   return (
     <div class={styles.App}>
-      <h1>Hello Lebab!</h1>
+      <h1>
+        <img src={logo} />
+        Lebab
+      </h1>
       <Editor text={code()} onChange={setCode} />
       <Editor text={transformedCode()} />
     </div>
