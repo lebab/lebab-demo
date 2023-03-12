@@ -57,10 +57,10 @@ export const App: Component = () => {
 
   return (
     <div class={styles.App}>
-      <h1>
-        <img src={logo} />
-        Lebab
-      </h1>
+      <header>
+        <h1>Lebab</h1>
+        <p>Lebab modernizes your JavaScript code!</p>
+      </header>
       <Editor text={code()} onChange={setCode} />
       <Editor text={transformedCode()} />
     </div>

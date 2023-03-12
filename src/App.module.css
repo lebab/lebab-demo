@@ -17,15 +17,19 @@ body {
   height: calc(100vh - 30px);
   padding: 15px;
 }
-.App h1 {
+
+.App header {
   grid-area: header;
+}
+.App header h1 {
   color: #f0db4f;
   margin: 0;
 }
-.App h1 img {
-  margin-right: 10px;
-  vertical-align: bottom;
+.App header p {
+  margin: 0;
+  font-size: 12px;
 }
+
 .App pre {
   grid-area: left;
 }
