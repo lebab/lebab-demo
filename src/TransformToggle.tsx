@@ -1,17 +1,17 @@
 import { Component } from "solid-js";
+import { Transform } from "./TransformMenu";
 import styles from "./TransformToggle.module.css";
-
-export type Transform = { name: string; enabled: boolean };
 
 interface TransformToggleProps {
   name: string;
+  title: string;
   enabled: boolean;
   onChange: (t: Transform) => void;
 }
 
 export const TransformToggle: Component<TransformToggleProps> = (props) => {
   return (
-    <label class={styles.TransformToggle}>
+    <label class={styles.TransformToggle} title={props.title}>
       <input
         type="checkbox"
         checked={props.enabled}

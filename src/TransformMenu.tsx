@@ -2,7 +2,7 @@ import { Component, For } from "solid-js";
 import styles from "./TransformMenu.module.css";
 import { TransformToggle } from "./TransformToggle";
 
-export type Transform = { name: string; enabled: boolean };
+export type Transform = { name: string; enabled: boolean; title?: string };
 
 interface TransformMenuProps {
   transforms: Transform[];
@@ -18,6 +18,7 @@ export const TransformMenu: Component<TransformMenuProps> = (props) => {
           {(tr) => (
             <TransformToggle
               name={tr.name}
+              title={tr.title}
               enabled={tr.enabled}
               onChange={props.onChange}
             />

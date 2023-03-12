@@ -41,25 +41,61 @@ exports.Greeter = Greeter;
 
 const initialTransforms: Transform[] = [
   // Safe
-  { name: "arrow", enabled: true },
-  { name: "arrow-return", enabled: true },
-  { name: "for-of", enabled: true },
-  { name: "for-each", enabled: true },
-  { name: "arg-rest", enabled: true },
-  { name: "arg-spread", enabled: true },
-  { name: "obj-method", enabled: true },
-  { name: "obj-shorthand", enabled: true },
-  { name: "no-strict", enabled: true },
-  { name: "exponent", enabled: true },
-  { name: "multi-var", enabled: false },
+  { name: "arrow", enabled: true, title: "Callbacks to arrow functions" },
+  {
+    name: "arrow-return",
+    enabled: true,
+    title: "drop return statements in arrow functions ",
+  },
+  { name: "for-of", enabled: true, title: "for loop to for-of loop " },
+  { name: "for-each", enabled: false, title: "for loop to Array.forEach()" },
+  { name: "arg-rest", enabled: true, title: "arguments to function(...args) " },
+  { name: "arg-spread", enabled: true, title: "apply() to spread operator " },
+  {
+    name: "obj-method",
+    enabled: true,
+    title: "function values in object to methods",
+  },
+  { name: "obj-shorthand", enabled: true, title: "{foo: foo} to {foo}" },
+  {
+    name: "no-strict",
+    enabled: true,
+    title: 'removal of "use strict" directives',
+  },
+  { name: "exponent", enabled: true, title: "Math.pow() to ** operator" },
+  {
+    name: "multi-var",
+    enabled: false,
+    title: "var x,y; declaration to var x; var y;",
+  },
   // Unsafe
-  { name: "let", enabled: true },
-  { name: "class", enabled: true },
-  { name: "commonjs", enabled: true },
-  { name: "template", enabled: true },
-  { name: "default-param", enabled: true },
-  { name: "destruct-param", enabled: true },
-  { name: "includes", enabled: true },
+  { name: "let", enabled: true, title: "var to let/const" },
+  { name: "class", enabled: true, title: "function/prototypes to classes " },
+  {
+    name: "commonjs",
+    enabled: true,
+    title: "CommonJS module definition to ES6 modules",
+  },
+  {
+    name: "template",
+    enabled: true,
+    title: "string concatenation to template strings",
+  },
+  {
+    name: "default-param",
+    enabled: true,
+    title: "a = a || 2 to default parameters",
+  },
+  {
+    name: "destruct-param",
+    enabled: true,
+    title: "use destructuring for objects in function parameters",
+  },
+  {
+    name: "includes",
+    enabled: true,
+    title: "array.indexOf(foo) !== -1 to array.includes(foo)",
+  },
 ];
 
 export const App: Component = () => {
