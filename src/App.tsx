@@ -40,6 +40,7 @@ exports.Greeter = Greeter;
 `.trim();
 
 const initialTransforms: Transform[] = [
+  // Safe
   { name: "arrow", enabled: true },
   { name: "arrow-return", enabled: true },
   { name: "for-of", enabled: true },
@@ -50,6 +51,8 @@ const initialTransforms: Transform[] = [
   { name: "obj-shorthand", enabled: true },
   { name: "no-strict", enabled: true },
   { name: "exponent", enabled: true },
+  { name: "multi-var", enabled: false },
+  // Unsafe
   { name: "let", enabled: true },
   { name: "class", enabled: true },
   { name: "commonjs", enabled: true },
