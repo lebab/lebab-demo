@@ -46,11 +46,19 @@ const transforms = [
 export const App: Component = () => {
   const [code, setCode] = createSignal(initialCode);
 
+  const transformedCode = () => {
+    try {
+      return lebab.transform(code(), transforms).code;
+    } catch (e) {
+      return e.message;
+    }
+  };
+
   return (
     <div class={styles.App}>
       <h1>Hello Lebab!</h1>
       <Editor text={code()} onChange={setCode} />
-      <Editor text={lebab.transform(code(), transforms).code} />
+      <Editor text={transformedCode()} />
     </div>
   );
 };

@@ -15,6 +15,7 @@ export const Editor: Component<EditorProps> = (props) => {
   let currentlyChanging = false;
 
   onMount(() => {
+    hljs.configure({ ignoreUnescapedHTML: true });
     jar = CodeJar(pre, hljs.highlightElement, { tab: "  " });
     if (props.onChange) {
       jar.onUpdate((txt) => {
