@@ -6,6 +6,7 @@ import styles from "./Editor.module.css";
 
 interface EditorProps {
   text: string;
+  type: "old" | "new";
   onChange?: (text: string) => void;
 }
 
@@ -33,7 +34,12 @@ export const Editor: Component<EditorProps> = (props) => {
   });
 
   return (
-    <pre ref={pre} class={`${styles.editor} language-javascript`}>
+    <pre
+      ref={pre}
+      class={`${styles.editor} language-javascript ${
+        props.type === "old" ? styles.editorOld : styles.editorNew
+      }`}
+    >
       {props.text}
     </pre>
   );

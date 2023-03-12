@@ -61,8 +61,8 @@ export const App: Component = () => {
         <h1>Lebab</h1>
         <p>Lebab modernizes your JavaScript code!</p>
       </header>
-      <Editor text={code()} onChange={setCode} />
-      <Editor text={transformedCode()} />
+      <Editor type="old" text={code()} onChange={setCode} />
+      <Editor type="new" text={transformedCode()} />
     </div>
   );
 };

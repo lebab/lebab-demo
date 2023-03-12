@@ -9,4 +9,24 @@
   line-height: 20px;
   padding: 10px;
   tab-size: 4;
+  position: relative;
+}
+
+.editor::before {
+  content: "...";
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 2px 12px;
+  color: rgb(203, 215, 227);
+  border-bottom-left-radius: 6px;
+  background-color: #666;
+}
+.editorOld::before {
+  content: "Your old ugly JS";
+  background-color: rgb(157, 70, 64);
+}
+.editorNew::before {
+  content: "Nice modern JS";
+  background-color: rgb(76, 157, 64);
 }
