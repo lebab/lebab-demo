@@ -1,3 +1,17 @@
 .TransformMenu {
-  padding: 3px 15px;
+  padding: 0px 10px;
+  display: flex;
+}
+.TransformMenuTitle {
+  margin-right: 10px;
+  padding-top: 6px;
+}
+.TransformMenuList {
+  background-color: black;
+  border-radius: 6px;
+  padding: 6px;
+}
+.TransformMenu label {
+  display: inline-block;
+  margin-right: 1em;
 }

@@ -11,20 +11,23 @@ interface TransformMenuProps {
 export const TransformMenu: Component<TransformMenuProps> = (props) => {
   return (
     <div class={styles.TransformMenu}>
-      <For each={props.transforms}>
-        {(tr) => (
-          <label>
-            <input
-              type="checkbox"
-              checked={tr.enabled}
-              onClick={(e) =>
-                props.onChange({ name: tr.name, enabled: !tr.enabled })
-              }
-            />{" "}
-            {tr.name}
-          </label>
-        )}
-      </For>
+      <strong class={styles.TransformMenuTitle}>Transforms:</strong>
+      <span class={styles.TransformMenuList}>
+        <For each={props.transforms}>
+          {(tr) => (
+            <label>
+              <input
+                type="checkbox"
+                checked={tr.enabled}
+                onClick={(e) =>
+                  props.onChange({ name: tr.name, enabled: !tr.enabled })
+                }
+              />{" "}
+              {tr.name}
+            </label>
+          )}
+        </For>
+      </span>
     </div>
   );
 };
