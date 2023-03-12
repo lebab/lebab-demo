@@ -6,3 +6,10 @@
   margin: 0;
   font-size: 12px;
 }
+.Title a {
+  color: inherit;
+  text-decoration: inherit;
+}
+.Title a:hover {
+  text-decoration: underline;
+}
