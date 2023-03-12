@@ -6,22 +6,36 @@ import logo from "./assets/lebab-logo-32.png";
 
 const initialCode = `
 'use strict';
+var _ = require('lodash');
 
 // Let/const
-var name = 'Bob', time = 'yesterday';
+var names = ['John', 'Doe'], time = 'yesterday';
 time = 'today';
 
 // Template string
 console.log('Hello ' + name + ', how are you ' + time + '?');
 
-var bob = {
+var john = {
   // Object shorthand
-  name: name,
+  names: names,
   // Object method
   sayMyName: function () {
-    console.log(this.name);
+    // Arrow functions
+    return this.names.map(function(n) { return n.toUpperCase(); }).join(' ');
   }
 };
+
+// Classes
+function Greeter(p) {
+  this.person = p;
+};
+// default parameters
+Greeter.prototype.greet = function(punct) {
+  punct = punct || "!";
+  console.log(this.person.sayMyName() + punct);
+};
+
+exports.Greeter = Greeter;
 `.trim();
 
 const transforms = [
