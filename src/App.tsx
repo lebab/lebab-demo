@@ -2,7 +2,7 @@ import { Component, createSignal } from "solid-js";
 import { Editor } from "./Editor";
 import styles from "./App.module.css";
 import lebab from "lebab";
-import { TransformMenu } from "./TransformMenu";
+import { Transform, TransformMenu } from "./TransformMenu";
 import { Title } from "./Title";
 
 const initialCode = `
@@ -39,42 +39,52 @@ Greeter.prototype.greet = function(punct) {
 exports.Greeter = Greeter;
 `.trim();
 
-const transforms = [
-  "arrow",
-  "arrow-return",
-  "for-of",
-  "for-each",
-  "arg-rest",
-  "arg-spread",
-  "obj-method",
-  "obj-shorthand",
-  "no-strict",
-  "exponent",
-  "let",
-  "class",
-  "commonjs",
-  "template",
-  "default-param",
-  "destruct-param",
-  "includes",
+const initialTransforms: Transform[] = [
+  { name: "arrow", enabled: true },
+  { name: "arrow-return", enabled: true },
+  { name: "for-of", enabled: true },
+  { name: "for-each", enabled: true },
+  { name: "arg-rest", enabled: true },
+  { name: "arg-spread", enabled: true },
+  { name: "obj-method", enabled: true },
+  { name: "obj-shorthand", enabled: true },
+  { name: "no-strict", enabled: true },
+  { name: "exponent", enabled: true },
+  { name: "let", enabled: true },
+  { name: "class", enabled: true },
+  { name: "commonjs", enabled: true },
+  { name: "template", enabled: true },
+  { name: "default-param", enabled: true },
+  { name: "destruct-param", enabled: true },
+  { name: "includes", enabled: true },
 ];
 
 export const App: Component = () => {
   const [code, setCode] = createSignal(initialCode);
+  const [transforms, setTransforms] = createSignal(initialTransforms);
+
+  const enabledTransforms = () =>
+    transforms()
+      .filter((t) => t.enabled)
+      .map((t) => t.name);
 
   const transformedCode = () => {
     try {
-      return lebab.transform(code(), transforms).code;
+      return lebab.transform(code(), enabledTransforms()).code;
     } catch (e) {
       return e.message;
     }
+  };
+
+  const toggleTansform = (tr: Transform) => {
+    setTransforms(transforms().map((t) => (t.name === tr.name ? tr : t)));
   };
 
   return (
     <div class={styles.App}>
       <header>
         <Title />
-        <TransformMenu />
+        <TransformMenu transforms={transforms()} onChange={toggleTansform} />
       </header>
       <Editor type="old" text={code()} onChange={setCode} />
       <Editor type="new" text={transformedCode()} />

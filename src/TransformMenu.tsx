@@ -1,33 +1,27 @@
 import { Component, For } from "solid-js";
 import styles from "./TransformMenu.module.css";
 
-const transforms = [
-  "arrow",
-  "arrow-return",
-  "for-of",
-  "for-each",
-  "arg-rest",
-  "arg-spread",
-  "obj-method",
-  "obj-shorthand",
-  "no-strict",
-  "exponent",
-  "let",
-  "class",
-  "commonjs",
-  "template",
-  "default-param",
-  "destruct-param",
-  "includes",
-];
+export type Transform = { name: string; enabled: boolean };
 
-export const TransformMenu: Component = () => {
+interface TransformMenuProps {
+  transforms: Transform[];
+  onChange: (t: Transform) => void;
+}
+
+export const TransformMenu: Component<TransformMenuProps> = (props) => {
   return (
     <div class={styles.TransformMenu}>
-      <For each={transforms}>
+      <For each={props.transforms}>
         {(tr) => (
           <label>
-            <input type="checkbox" /> {tr}
+            <input
+              type="checkbox"
+              checked={tr.enabled}
+              onClick={(e) =>
+                props.onChange({ name: tr.name, enabled: !tr.enabled })
+              }
+            />{" "}
+            {tr.name}
           </label>
         )}
       </For>
