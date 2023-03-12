@@ -1,5 +1,6 @@
 import { Component, For } from "solid-js";
 import styles from "./TransformMenu.module.css";
+import { TransformToggle } from "./TransformToggle";
 
 export type Transform = { name: string; enabled: boolean };
 
@@ -15,16 +16,11 @@ export const TransformMenu: Component<TransformMenuProps> = (props) => {
       <span class={styles.TransformMenuList}>
         <For each={props.transforms}>
           {(tr) => (
-            <label>
-              <input
-                type="checkbox"
-                checked={tr.enabled}
-                onClick={(e) =>
-                  props.onChange({ name: tr.name, enabled: !tr.enabled })
-                }
-              />{" "}
-              {tr.name}
-            </label>
+            <TransformToggle
+              name={tr.name}
+              enabled={tr.enabled}
+              onChange={props.onChange}
+            />
           )}
         </For>
       </span>
