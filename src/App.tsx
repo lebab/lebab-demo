@@ -1,4 +1,4 @@
-import { Component, createEffect, createSignal } from "solid-js";
+import { Component, createSignal } from "solid-js";
 import { Editor } from "./Editor";
 import styles from "./App.module.css";
 import lebab from "lebab";
