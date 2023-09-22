@@ -39,8 +39,6 @@ export const Editor: Component<EditorProps> = (props) => {
       class={`${styles.editor} language-javascript ${
         props.type === "old" ? styles.editorOld : styles.editorNew
       }`}
-    >
-      {props.text}
-    </pre>
+    ></pre>
   );
 };
