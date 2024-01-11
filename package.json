@@ -9,7 +9,7 @@
   "dependencies": {
     "codejar": "^3.7.0",
     "highlight.js": "^11.7.0",
-    "lebab": "^3.2.2",
+    "lebab": "^3.2.4",
     "solid-js": "^1.6.10"
   },
   "devDependencies": {
