@@ -13,22 +13,19 @@ interface EditorProps {
 export const Editor: Component<EditorProps> = (props) => {
   let pre: HTMLPreElement;
   let jar: ReturnType<typeof CodeJar>;
-  let currentlyChanging = false;
 
   onMount(() => {
     hljs.configure({ ignoreUnescapedHTML: true });
     jar = CodeJar(pre, hljs.highlightElement, { tab: "  " });
     if (props.onChange) {
       jar.onUpdate((txt) => {
-        currentlyChanging = true;
         props.onChange(txt);
-        currentlyChanging = false;
       });
     }
   });
 
   createEffect(() => {
-    if (!currentlyChanging) {
+    if (props.text !== jar.toString()) {
       jar.updateCode(props.text);
     }
   });
@@ -39,8 +36,6 @@ export const Editor: Component<EditorProps> = (props) => {
       class={`${styles.editor} language-javascript ${
         props.type === "old" ? styles.editorOld : styles.editorNew
       }`}
-    >
-      {props.text}
-    </pre>
+    ></pre>
   );
 };
