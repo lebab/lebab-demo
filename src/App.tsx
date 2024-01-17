@@ -40,6 +40,8 @@ exports.Greeter = Greeter;
 `.trim();
 
 const initialTransforms: Transform[] = [
+  // Should be run before arrow transform
+  { name: "class", enabled: true, title: "function/prototypes to classes " },
   // Safe
   { name: "arrow", enabled: true, title: "Callbacks to arrow functions" },
   {
@@ -70,7 +72,6 @@ const initialTransforms: Transform[] = [
   },
   // Unsafe
   { name: "let", enabled: true, title: "var to let/const" },
-  { name: "class", enabled: true, title: "function/prototypes to classes " },
   {
     name: "commonjs",
     enabled: true,
