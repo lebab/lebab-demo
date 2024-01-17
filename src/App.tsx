@@ -42,6 +42,8 @@ exports.Greeter = Greeter;
 const initialTransforms: Transform[] = [
   // Should be run before arrow transform
   { name: "class", enabled: true, title: "function/prototypes to classes " },
+  // Should be run before for-of and for-each transforms
+  { name: "let", enabled: true, title: "var to let/const" },
   // Safe
   { name: "arrow", enabled: true, title: "Callbacks to arrow functions" },
   {
@@ -71,7 +73,6 @@ const initialTransforms: Transform[] = [
     title: "var x,y; declaration to var x; var y;",
   },
   // Unsafe
-  { name: "let", enabled: true, title: "var to let/const" },
   {
     name: "commonjs",
     enabled: true,
